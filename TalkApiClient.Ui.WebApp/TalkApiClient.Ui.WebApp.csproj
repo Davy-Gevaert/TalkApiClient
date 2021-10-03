@@ -6,13 +6,9 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Manager\Data\**" />
-    <Compile Remove="Areas\Manager\Models\**" />
     <Content Remove="Areas\Manager\Data\**" />
-    <Content Remove="Areas\Manager\Models\**" />
     <EmbeddedResource Remove="Areas\Manager\Data\**" />
-    <EmbeddedResource Remove="Areas\Manager\Models\**" />
     <None Remove="Areas\Manager\Data\**" />
-    <None Remove="Areas\Manager\Models\**" />
   </ItemGroup>
 
   <ItemGroup>

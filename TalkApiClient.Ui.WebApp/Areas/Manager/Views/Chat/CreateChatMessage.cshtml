@@ -1,8 +1,10 @@
 ﻿@model TalkApiClient.Model.ChatMessageRequest
 
 @{
-    ViewData["Title"] = "Create POST";
+    ViewData["Title"] = "Create POST /api/chat-messages";
 }
+
+<h1>@ViewData["Title"]</h1>
 
 <form method="post">
     <partial name="CreateEditPartialChatMessage" model="Model" />

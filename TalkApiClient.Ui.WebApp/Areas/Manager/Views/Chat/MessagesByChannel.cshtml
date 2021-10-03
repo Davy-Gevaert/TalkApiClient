@@ -1,0 +1,57 @@
+﻿@model TalkApiClient.Ui.WebApp.Areas.Manager.Models.ChatViewModel
+@{
+    ViewData["Title"] = "Lijst API Chat-Messages";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (User.IsInRole("Administrator"))
+{
+    <a class="btn btn-primary" asp-action="CreateChatMessage">New POST</a>
+}
+
+@*@using (Html.BeginForm("GETChannel", "Chat", FormMethod.Post))
+    {
+
+        @Html.DropDownListFor(c => c.SelectedChannel, (IEnumerable<SelectListItem>)ViewData["MyChannels"], "selecteer")
+        <input type="submit" value="@Model.SelectedChannel" />
+    }*@
+
+@using (Html.BeginForm("MessagesByChannel", "Chat", FormMethod.Get))
+{
+        <select name="channel">
+
+            
+
+            @foreach (var row in @Model.MyChannels)
+            {
+                <option value="@row.Name">@row.Name</option>
+            }
+
+        </select>
+        <input type="submit" value="submit" />
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Author</th>
+            <th>Message</th>
+            <th>Channel</th>
+            <th>CreatedAt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.GetMessagesFromSelectedChannel != null)
+        {
+            @foreach (var response in Model.GetMessagesFromSelectedChannel)
+            {
+
+                <partial name="RowPartialChatMessage" model="response" />
+
+            }
+        }
+
+    </tbody>
+</table>
