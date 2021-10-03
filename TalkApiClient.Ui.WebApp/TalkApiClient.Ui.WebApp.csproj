@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Manager\Data\**" />
+    <Compile Remove="Areas\Manager\Models\**" />
+    <Content Remove="Areas\Manager\Data\**" />
+    <Content Remove="Areas\Manager\Models\**" />
+    <EmbeddedResource Remove="Areas\Manager\Data\**" />
+    <EmbeddedResource Remove="Areas\Manager\Models\**" />
+    <None Remove="Areas\Manager\Data\**" />
+    <None Remove="Areas\Manager\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.10" />
@@ -17,11 +28,6 @@
     <ProjectReference Include="..\TalkApiClient.Data\TalkApiClient.Data.csproj" />
     <ProjectReference Include="..\TalkApiClient.Model\TalkApiClient.Model.csproj" />
     <ProjectReference Include="..\TalkApiClient.Services\TalkApiClient.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Areas\Manager\Models\" />
   </ItemGroup>
 
 </Project>
