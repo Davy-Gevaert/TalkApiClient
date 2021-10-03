@@ -1,0 +1,11 @@
+﻿@model TalkApiClient.Model.ChatChannelRequest
+
+@{
+	ViewData["Title"] = "Create POST";
+}
+
+<form method="post">
+	<partial name="CreateEditPartialChatChannel" model="Model"/>
+
+	<button class="btn btn-primary" type="submit">Create</button>
+</form>

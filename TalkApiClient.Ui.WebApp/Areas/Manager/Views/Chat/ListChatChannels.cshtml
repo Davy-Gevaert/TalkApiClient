@@ -1,0 +1,27 @@
+﻿@model IList<TalkApiClient.Model.ChatChannelResponse>
+@{
+    ViewData["Title"] = "Lijst API Chat-Channels";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+    @if (User.IsInRole("Administrator"))
+    {
+        <a class="btn btn-primary" asp-action="CreateChatChannel">New POST</a>
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CreatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var response in Model)
+            {
+                <partial name="RowPartialChatChannel" model="response" />
+            }
+        </tbody>
+    </table>

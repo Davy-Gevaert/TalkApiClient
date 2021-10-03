@@ -1,0 +1,30 @@
+﻿@model TalkApiClient.Ui.WebApp.Areas.Manager.Models.ChatViewModel
+@{
+    ViewData["Title"] = "TalkApiClient";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>Lijst</th>
+        <th>Actie</th>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Lijst chat channels", "ListChatChannels")
+        </td>
+        <td>
+            @Html.ActionLink("Aanmaken chat channel", "CreateChatChannel")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Lijst chat messages", "ListChatMessages")
+        </td>
+        <td>
+            @Html.ActionLink("Aanmaken chat message", "CreateChatMessage")
+        </td>
+    </tr>
+</table>
+
+
+
