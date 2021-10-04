@@ -1,4 +1,4 @@
-﻿@model TalkApiClient.Ui.WebApp.Areas.Manager.Models.ChatViewModel
+﻿@model IList<TalkApiClient.Model.ChatMessageResponse>
 @{
     ViewData["Title"] = "Lijst API Chat-Messages";
 }
@@ -9,27 +9,11 @@
 {
     <a class="btn btn-primary" asp-action="CreateChatMessage">New POST</a>
 }
-
-@*@using (Html.BeginForm("GETChannel", "Chat", FormMethod.Post))
-    {
-
-        @Html.DropDownListFor(c => c.SelectedChannel, (IEnumerable<SelectListItem>)ViewData["MyChannels"], "selecteer")
-        <input type="submit" value="@Model.SelectedChannel" />
-    }*@
-
 @using (Html.BeginForm("MessagesByChannel", "Chat", FormMethod.Get))
 {
-        <select name="channel">
 
-            
-
-            @foreach (var row in @Model.MyChannels)
-            {
-                <option value="@row.Name">@row.Name</option> 
-            }
-
-        </select>
-        <input type="submit" value="submit" />
+    @Html.DropDownList("channel", (IEnumerable<SelectListItem>)ViewData["MyChannels"])
+    <input type="submit" value="submit" />
 }
 
 <table class="table table-striped">
@@ -43,9 +27,9 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.GetMessagesFromSelectedChannel != null)
+        @if (Model != null)
         {
-            @foreach (var response in Model.GetMessagesFromSelectedChannel)
+            @foreach (var response in Model)
             {
 
                 <partial name="RowPartialChatMessage" model="response" />
@@ -55,3 +39,5 @@
 
     </tbody>
 </table>
+
+<p>@Html.ActionLink("Refresh van lijst", "MessagesByChannel")</p>

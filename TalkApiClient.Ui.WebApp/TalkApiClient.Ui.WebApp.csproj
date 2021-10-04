@@ -26,4 +26,8 @@
     <ProjectReference Include="..\TalkApiClient.Services\TalkApiClient.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Manager\Models\" />
+  </ItemGroup>
+
 </Project>

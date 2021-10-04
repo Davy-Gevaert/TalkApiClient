@@ -9,23 +9,23 @@
     </tr>
     <tr>
         <td>
-            @Html.ActionLink("GET /api/chat-channels", "ListChatChannels")
+            @Html.ActionLink("Chat kanalen uitlezen", "ListChatChannels")
         </td>
         <td>
-            @Html.ActionLink("POST /api/chat-channels", "CreateChatChannel")
-        </td>
-    </tr>
-    <tr>
-        <td>
-            @Html.ActionLink("GET /api/chat-messages", "ListChatMessages")
-        </td>
-        <td>
-            @Html.ActionLink("POST /api/chat-messages", "CreateChatMessage")
+            @Html.ActionLink("Nieuwe chat kanalen aanmaken", "CreateChatChannel")
         </td>
     </tr>
     <tr>
         <td>
-            @Html.ActionLink("GET /api/chat-messages?Channel=...", "MessagesByChannel")
+            @Html.ActionLink("Berichten uitlezen voor alle kanalen", "ListChatMessages")
+        </td>
+        <td>
+            @Html.ActionLink("Bericht sturen naar een specifiek kanaal", "CreateChatMessage")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Bericht uitlezen voor specifiek kanaal GET /api/chat-messages?Channel=...", "MessagesByChannel")
         </td>
         <td>
 

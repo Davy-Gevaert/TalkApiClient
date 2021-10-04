@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TalkApiClient.Model;
 using TalkApiClient.Services;
-using TalkApiClient.Ui.WebApp.Areas.Manager.Models;
 
 namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
 {
@@ -64,42 +63,28 @@ namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateChatMessage(ChatMessageRequest value)
         {
+            // lijst van ChatMessageRequest
             await _chatChannelService.CreateAsync(value, "/api/chat-messages");
 
             return RedirectToAction("ListChatMessages");
         }
 
         /* 
-         * /api/chat-messages?Channel= + value
+         * /api/chat-messages?Channel= + channel
          */
         public async Task<IActionResult> MessagesByChannel(string channel)
         {
-            
+            // verkrijg lijst van ChatChannelResponse
             var channels = await _chatChannelService.GetAllAsync<ChatChannelResponse>("/api/chat-channels");
             
+            // aanmaken Html.DropDownList met ViewData
+            var myChannelsDropDownlist = new SelectList(channels, "Name");
+            ViewData["MyChannels"] = myChannelsDropDownlist;
+            
+            // lijst van ChatMessageResponse
             var messagesFromChannel = await _chatChannelService.GetAllAsync<ChatMessageResponse>("/api/chat-messages?Channel=" + channel);
 
-            ChatViewModel chatViewModel = new ChatViewModel();
-
-            chatViewModel.MyChannels = channels;
-            chatViewModel.GetMessagesFromSelectedChannel = messagesFromChannel;
-
-            return View(chatViewModel);
+            return View(messagesFromChannel);
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> MessagesByChannel(string value)
-        //{
-        //    var channels = await _chatChannelService.GetAllAsync<ChatChannelResponse>("/api/chat-channels");
-        //    ChatViewModel chatViewModel = new ChatViewModel();
-
-        //    chatViewModel.MyChannels = channels;
-
-        //    var messagesFromChannel = await _chatChannelService.GetAllAsync<ChatMessageResponse>("/api/chat-messages?Channel=" + value);
-        //    chatViewModel.GetMessagesFromSelectedChannel = messagesFromChannel;
-
-        //    return View(chatViewModel);
-            
-        //}
     }
 }
