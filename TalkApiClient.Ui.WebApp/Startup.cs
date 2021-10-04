@@ -37,14 +37,20 @@ namespace TalkApiClient.Ui.WebApp
                 options.LoginPath = "/Account/SignIn";
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
+            
+            var appSettings = new AppSettings();
+            Configuration.Bind(nameof(AppSettings), appSettings);
+            services.AddSingleton(appSettings);
 
             services.AddHttpClient("TalkApi", (sp, c) =>
             {
-                c.BaseAddress = new Uri("https://talkapi.azurewebsites.net");
+                c.BaseAddress = new Uri(appSettings.ApiBaseUrl);
             });
 
             services.AddTransient<ChatChannelService>();
             services.AddControllersWithViews();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
