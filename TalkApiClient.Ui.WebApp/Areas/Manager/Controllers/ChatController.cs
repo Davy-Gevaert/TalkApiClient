@@ -27,6 +27,7 @@ namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
          */
         public async Task<IActionResult> ListChatChannels()
         {
+            // lijst van ChatChannelResponse
             var channels = await _chatChannelService.GetAllAsync<ChatChannelResponse>("/api/chat-channels");
 
             return View(channels);
@@ -41,6 +42,7 @@ namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateChatChannel(ChatChannelRequest value)
         {
+            // aanmaken chatkanaal
             await _chatChannelService.CreateAsync(value, "/api/chat-channels");
 
             return RedirectToAction("ListChatChannels");
@@ -50,6 +52,7 @@ namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
          */
         public async Task<IActionResult> ListChatMessages()
         {
+            // lijst van ChatMessageResponse
             var messages = await _chatChannelService.GetAllAsync<ChatMessageResponse>("/api/chat-messages");
 
             return View(messages);
@@ -63,7 +66,7 @@ namespace TalkApiClient.Ui.WebApp.Areas.Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateChatMessage(ChatMessageRequest value)
         {
-            // lijst van ChatMessageRequest
+            // bericht aanmaken
             await _chatChannelService.CreateAsync(value, "/api/chat-messages");
 
             return RedirectToAction("ListChatMessages");
