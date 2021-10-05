@@ -7,7 +7,7 @@
 
     @if (User.IsInRole("Administrator"))
     {
-        <a class="btn btn-primary" asp-action="CreateChatMessage">New POST</a>
+        <a class="btn btn-primary" asp-action="CreateChatMessage">Aanmaken bericht</a>
     }
 
     <table class="table table-striped">
@@ -27,3 +27,5 @@
             }
         </tbody>
     </table>
+
+    <p>@Html.ActionLink("Terug naar index", "Index")</p>

@@ -7,7 +7,7 @@
 
 @if (User.IsInRole("Administrator"))
 {
-    <a class="btn btn-primary" asp-action="CreateChatMessage">New POST</a>
+    <a class="btn btn-primary" asp-action="CreateChatMessage">Aanmaken bericht</a>
 }
 @using (Html.BeginForm("MessagesByChannel", "Chat", FormMethod.Get))
 {
@@ -41,3 +41,5 @@
 </table>
 
 <p>@Html.ActionLink("Refresh van volledige lijst berichten alle chat kanalen", "MessagesByChannel")</p>
+
+<p>@Html.ActionLink("Terug naar index", "Index")</p>
